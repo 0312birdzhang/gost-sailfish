@@ -33,8 +33,8 @@ rm -rf %{buildroot}
 # >> install pre
 mkdir -p %{buildroot}/usr/bin
 cp gost %{buildroot}/usr/bin/.
-mkdir -p %{buildroot}/usr/lib/systemd/user
-cp gost.service %{buildroot}/usr/lib/systemd/user/.
+mkdir -p %{buildroot}/etc/systemd/system
+cp gost.service %{buildroot}/etc/systemd/system/.
 mkdir -p %{buildroot}/home/nemo/.config/gost
 cp gost.json %{buildroot}/home/nemo/.config/gost/.
 # << install pre
@@ -45,7 +45,7 @@ cp gost.json %{buildroot}/home/nemo/.config/gost/.
 %files
 %defattr(-,root,root,-)
 %attr(0755, root, root) %{_bindir}/*
-/usr/lib/systemd/user/
+/etc/systemd/system/
 %dir %attr(0755, nemo, nemo) /home/nemo/.config/gost
 %dir %attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
 # >> files
