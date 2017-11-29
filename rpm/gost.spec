@@ -6,7 +6,7 @@ Name:       gost
 
 Summary:    A simple security tunnel written in Golang
 Version:    2.4
-Release:    1
+Release:    2
 Group:      Applications/Internet
 License:    MIT
 Source0:    %{name}-%{version}.tar.bz2
