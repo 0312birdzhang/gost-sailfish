@@ -4,10 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=nemo
 ExecStart=/usr/bin/gost -C /home/nemo/.config/gost/gost.json
-Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/100000/dbus/user_bus_socket
 ExecStop=/bin/kill -TERM $MAINPID
-ExecReload=/bin/kill -HUP $MAINPID
 [Install]
 WantedBy=user-session.target
