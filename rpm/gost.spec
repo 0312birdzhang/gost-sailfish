@@ -5,8 +5,8 @@ Name:       gost
 # << macros
 
 Summary:    A simple security tunnel written in Golang
-Version:    2.4
-Release:    4
+Version:    2.5
+Release:    1
 Group:      Applications/Internet
 License:    MIT
 Source0:    %{name}-%{version}.tar.bz2
