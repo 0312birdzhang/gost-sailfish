@@ -46,7 +46,7 @@ cp gost.json %{buildroot}/home/nemo/.config/gost/.
 %defattr(-,root,root,-)
 %attr(0755, root, root) %{_bindir}/*
 /usr/lib/systemd/user/
-%dir %attr(0755, nemo, nemo) /home/nemo/.config/gost
-%dir %attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
+%dir /home/nemo/.config/gost
+%attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
 # >> files
 # << files
