@@ -34,10 +34,10 @@ A simple security tunnel written in Golang
 systemctl-user daemon-reload
 
 %preun
-systemctl-user daemon-reload
+systemctl-user stop gost.service
 
 %postun
-systemctl-user stop gost.service
+systemctl-user daemon-reload
 
 
 %install
@@ -67,6 +67,6 @@ cp gost.json %{buildroot}/home/nemo/.config/gost/gost.json
 %attr(0755, root, root) %{_bindir}/
 %{_libdir}/systemd/user/
 %dir %attr(0755, nemo, nemo) /home/nemo/.config/gost
-%attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
+%config(noreplace) %attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
 # >> files
 # << files
