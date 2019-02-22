@@ -1,3 +1,7 @@
+%define __debug_install_post   \
+   %{_rpmconfigdir}/find-debuginfo.sh %{?_find_debuginfo_opts} "%{_builddir}/%{?buildsubdir}"\
+%{nil}
+
 Name:       gost
 
 Summary:    A simple security tunnel written in Golang
