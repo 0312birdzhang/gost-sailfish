@@ -47,10 +47,10 @@ mkdir -p %{buildroot}/usr/bin
 osarch=$(uname -p)
 if [[ "$osarch" = *"arm"* ]]; then
   tar -xvf %{name}_2.7.2_linux_arm.tar.gz
-  cp %{name}_2.7.2_linux_arm/gost %{buildroot}/usr/bin/.
+  install -m 755  %{name}_2.7.2_linux_arm/gost %{buildroot}/usr/bin/gost
 else
   tar -xvf %{name}_2.7.2_linux_386.tar.gz
-  cp %{name}_2.7.2_linux_386/gost %{buildroot}/usr/bin/.
+  install -m 755  %{name}_2.7.2_linux_386/gost %{buildroot}/usr/bin/gost
 fi
 
 mkdir -p %{buildroot}%{_libdir}/systemd/user
