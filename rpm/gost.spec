@@ -1,6 +1,4 @@
-%define __debug_install_post   \
-   %{_rpmconfigdir}/find-debuginfo.sh %{?_find_debuginfo_opts} "%{_builddir}/%{?buildsubdir}"\
-%{nil}
+%global _missing_build_ids_terminate_build 0
 
 Name:       gost
 
