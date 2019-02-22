@@ -9,7 +9,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}_%{version}_linux_386.tar.gz
 Source2:    %{name}_%{version}_linux_arm.tar.gz
 
-BuildRequire: tar systemd
+BuildRequires: tar systemd
 
 %description
 A simple security tunnel written in Golang
@@ -38,21 +38,17 @@ systemctl-user daemon-reload
 systemctl-user stop gost.service
 
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %install
 rm -rf %{buildroot}
 # >> install pre
 mkdir -p %{buildroot}/usr/bin
 osarch=$(uname -p)
 if [[ "$osarch" = *"arm"* ]]; then
-  tar -xvf %{_sourcedir}/%{name}_%{version}_linux_arm.tar.gz
-  cp %{name}_%{version}_linux_arm/gost %{buildroot}/usr/bin/.
+  tar -xvf %{_sourcedir}/%{name}_2.7.2_linux_arm.tar.gz
+  cp %{name}_2.7.2_linux_arm/gost %{buildroot}/usr/bin/.
 else
-  tar -xvf %{_sourcedir}/%{name}_%{version}_linux_arm.386.gz
-  cp %{name}_%{version}_linux_386/gost %{buildroot}/usr/bin/.
+  tar -xvf %{_sourcedir}/%{name}_2.7.2_linux_386.tar.gz
+  cp %{name}_2.7.2_linux_386/gost %{buildroot}/usr/bin/.
 fi
 
 mkdir -p %{buildroot}%{_libdir}/systemd/user
