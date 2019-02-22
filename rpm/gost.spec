@@ -6,8 +6,6 @@ Release:    1
 Group:      Applications/Internet
 License:    MIT
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    %{name}_%{version}_linux_386.tar.gz
-Source2:    %{name}_%{version}_linux_arm.tar.gz
 
 BuildRequires: tar systemd
 
@@ -44,17 +42,17 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/bin
 osarch=$(uname -p)
 if [[ "$osarch" = *"arm"* ]]; then
-  tar -xvf %{_sourcedir}/%{name}_2.7.2_linux_arm.tar.gz
+  tar -xvf %{name}_2.7.2_linux_arm.tar.gz
   cp %{name}_2.7.2_linux_arm/gost %{buildroot}/usr/bin/.
 else
-  tar -xvf %{_sourcedir}/%{name}_2.7.2_linux_386.tar.gz
+  tar -xvf %{name}_2.7.2_linux_386.tar.gz
   cp %{name}_2.7.2_linux_386/gost %{buildroot}/usr/bin/.
 fi
 
 mkdir -p %{buildroot}%{_libdir}/systemd/user
 cp gost.service %{buildroot}%{_libdir}/systemd/user/.
 mkdir -p %{buildroot}/home/nemo/.config/gost
-cp gost.json %{buildroot}/home/nemo/.config/gost/.
+cp gost.json %{buildroot}/home/nemo/.config/gost/gost.json
 # << install pre
 
 # >> install post
@@ -64,7 +62,7 @@ cp gost.json %{buildroot}/home/nemo/.config/gost/.
 %defattr(-,root,root,-)
 %attr(0755, root, root) %{_bindir}/
 %{_libdir}/systemd/user/
-%dir /home/nemo/.config/gost
+%dir %attr(0755, nemo, nemo) /home/nemo/.config/gost
 %attr(0644, nemo, nemo) /home/nemo/.config/gost/gost.json
 # >> files
 # << files
